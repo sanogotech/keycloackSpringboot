@@ -19,7 +19,7 @@ public class TokenController {
     }
     
     @GetMapping(value = "/logout")
-	public String logout(HttpServletRequest request) throws ServletException {
+	public RedirectView logout(HttpServletRequest request) throws ServletException {
 		request.logout();
 		return new RedirectView("/");
 	}
