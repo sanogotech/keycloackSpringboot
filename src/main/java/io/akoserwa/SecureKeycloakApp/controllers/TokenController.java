@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.ServletException;
 
+import  org.springframework.web.servlet.view.RedirectView;
+
 @RestController
 public class TokenController {
 
@@ -19,7 +21,7 @@ public class TokenController {
     @GetMapping(value = "/logout")
 	public String logout(HttpServletRequest request) throws ServletException {
 		request.logout();
-		return "/";
+		return new RedirectView("/");
 	}
 
 }
