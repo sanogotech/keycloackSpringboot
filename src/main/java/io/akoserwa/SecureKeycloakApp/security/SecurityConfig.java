@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 
 @KeycloakConfiguration
 class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
@@ -56,5 +57,12 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .antMatchers("/**").authenticated()
                 .anyRequest().authenticated();
     }
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	    web
+	       .ignoring()
+	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+	}
 }
 
